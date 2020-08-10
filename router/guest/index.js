@@ -8,5 +8,4 @@ module.exports = asyncHandler( async function index(req,res)
         req.session=null;
     }
     res.render('guest/index');
-    
 });
