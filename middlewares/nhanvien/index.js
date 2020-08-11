@@ -2,6 +2,7 @@ const nhanvien = require('../../models/nhanvien');
 const asynchandler = require('express-async-handler');
 
 module.exports = asynchandler(async function authNV(req, res, next) {
+	// id nhan vien
     const nhanvienID = req.session.nvId;
     res.locals.kwNV = null;
     if (!nhanvienID) {
