@@ -1,7 +1,9 @@
 module.exports = function outloginKH(req, res, next) {
-    if (req.kwKH ) {
+    if (req.kwKH ) 
+    {
         res.redirect('/dangxuat');
-    } else {
+    } else 
+    {
         return next();
     }
 }
