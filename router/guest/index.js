@@ -1,6 +1,7 @@
 const asyncHandler=require('express-async-handler');
 module.exports = asyncHandler( async function index(req,res)
 {
+	//Khach hang
     if(req.session.khachhangId || req.session.nvId!=null)
     {
         req.session.khachhangId = null;
