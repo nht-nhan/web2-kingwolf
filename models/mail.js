@@ -54,5 +54,4 @@ async function forgetpw(to, subject, name, token) {
         text: links,
     });
 }
-
 module.exports = { send, sendpw, forgetpw };
