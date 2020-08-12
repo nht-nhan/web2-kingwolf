@@ -2,7 +2,6 @@ const { Router } = require('express');
 const khachhang = require('../../models/khachhang');
 const outlogin = require('../../middlewares/khachhang/outlogin');
 const asyncHandler = require('express-async-handler');
-
 const router = new Router();
 //-------------------[Đăng Nhập]-------------------//
 router.use(outlogin);
