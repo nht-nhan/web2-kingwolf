@@ -28,7 +28,8 @@ router.use(outlogin);
     const emails = req.body.kw_email;
     const pw = req.body.kw_password;
     const KH = await khachhang.find_one_email(emails);
-    try {
+    try 
+    {
         if (KH) {
             const checktoken = KH.tokenkichhoat;
             if (checktoken === null) {
