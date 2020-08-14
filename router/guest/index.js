@@ -4,6 +4,7 @@ module.exports = asyncHandler( async function index(req,res)
 	//Khach ghe tham
     if(req.session.khachhangId || req.session.nvId!=null)
     {
+		// update
         req.session.khachhangId = null;
         req.session.nvId=null;
         req.session=null;
