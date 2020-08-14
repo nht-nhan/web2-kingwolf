@@ -1,9 +1,7 @@
 module.exports = function reloginKH(req, res, next) {
-    if (!req.kwKH ) 
-    {
+    if (!req.kwKH ) {
         res.redirect('/');
-    } else 
-    {
+    } else {
         return next();
     }
 }

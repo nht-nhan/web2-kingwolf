@@ -188,7 +188,6 @@ KhachHang.init({
     sequelize: db,
     modelName: 'khachhang',
 });
-
 KhachHang.hasOne(taikhoan);
 taikhoan.belongsTo(KhachHang);
 module.exports=KhachHang;
