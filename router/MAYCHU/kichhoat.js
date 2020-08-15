@@ -6,7 +6,6 @@ const taikhoan = require('../../models/taikhoan');
 const Sequelize = require('sequelize');
 const OP = Sequelize.Op;
 const asyncHandler = require('express-async-handler');
-
 const router = new Router();
 
 //-------------------[Kích Hoạt Email]-------------------//
