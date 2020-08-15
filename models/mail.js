@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-
 async function send(to, subject, token) {
     const links = 'Kích hoạt địa chỉ email bấm vào link: ' +'http://localhost:3000'+'/kichhoat/' + token;
     const transporter = nodemailer.createTransport({
