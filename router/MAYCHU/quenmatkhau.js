@@ -4,7 +4,6 @@ const outlogin = require('../../middlewares/khachhang/outlogin');
 const email = require('../../models/mail');
 const crypto = require('crypto');
 const asyncHandler = require('express-async-handler');
-
 const router = new Router();
 
 //-------------------[Quên Mật Khẩu]-------------------//
