@@ -10,12 +10,14 @@ class KhachHang extends Model{
        {
            return KhachHang.findAndCountAll({where:{email:emails}});
        }
+
     //=========[END: Count Email]=========//
     //=========[BEGIN: Count Số điện thoại]=========//
        static async count_sdt(sdts)
        {
         return KhachHang.findAndCountAll({where:{sodienthoai:sdts}});
        }
+
     //=========[END: Count Số điện thoại]=========//
     //=========[BEGIN: Find One Email]=========//
         static async find_one_email(emails)
