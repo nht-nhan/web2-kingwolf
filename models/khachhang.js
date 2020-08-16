@@ -3,7 +3,6 @@ const Sequelize = require('sequelize');
 const db = require('./db');
 const taikhoan= require('./taikhoan');
 const Model = Sequelize.Model;
-
 class KhachHang extends Model{
 //-----------[SELECT]-----------//
     //=========[BEGIN: Count Email]=========//

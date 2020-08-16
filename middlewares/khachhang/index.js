@@ -4,11 +4,13 @@ const asynchandler = require('express-async-handler');
 module.exports = asynchandler(async function authKH(req, res, next) {
     const khachhangId = req.session.khachhangId;
     res.locals.kwKH = null;
-    if (!khachhangId) {
+    if (!khachhangId) 
+    {
         return next();
     }
     const khachhangs = await khachhang.find_id_join_tk(khachhangId);
-    if (!khachhangId) {
+    if (!khachhangId) 
+    {
         return next();
     }
     req.kwKH = khachhangs;
