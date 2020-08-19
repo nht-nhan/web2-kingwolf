@@ -3,13 +3,11 @@ var KTSessionTimeoutDemo = function () {
 
     var initDemo = function () {
         $.sessionTimeout({
-            title: 'Session Timeout Notification',
-            message: 'Your session is about to expire.',
-            keepAliveUrl: 'https://keenthemes.com/keen/themes/themes/keen/dist/preview/inc/api/session-timeout/keepalive.php',
-            redirUrl: '?page=custom/user/login-v1&demo=default',
-            logoutUrl: '?page=custom/user/login-v1&demo=default',
-            warnAfter: 3000, //warn after 5 seconds
-            redirAfter: 35000, //redirect after 10 secons,
+            title: 'KingWolf Bank thông báo',
+            message: 'Thời gian truy cập website của bạn đã quá thời gian',
+            logoutUrl: 'http://localhost:3000/dangxuat',
+            warnAfter: 300000, //warn after 5 phút
+            redirAfter: 330000, //redirect after 10 secons,
             ignoreUserActivity: true,
             countdownMessage: 'Redirecting in {timer} seconds.',
             countdownBar: true
