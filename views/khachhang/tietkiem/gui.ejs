@@ -1,0 +1,407 @@
+<%- include('../header',{title: 'Tiết kiệm'}) -%>
+<!-- begin:: Header Mobile -->
+<div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed " >
+    <div class="kt-header-mobile__logo">
+        <a href="/khachhang">
+            <img alt="Logo" src="kw/media/logos/logo-6.png"/>
+        </a>
+    </div>
+    <div class="kt-header-mobile__toolbar">
+        <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+       
+        <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+    </div>
+</div>
+<!-- end:: Header Mobile -->
+<!-- begin:: Root -->
+<div class="kt-grid kt-grid--hor kt-grid--root">
+    <!-- begin:: Page -->
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        <!-- begin:: Aside -->
+        <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+        <div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+            <!-- begin::Aside Brand -->
+            <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+                <div class="kt-aside__brand-logo">
+                    <a href="/khachhang">
+                        <img alt="Logo" src="kw/media/logos/logo-6.png"/>
+                    </a>
+                </div>
+                <div class="kt-aside__brand-tools">
+                    <button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler"><span></span></button>
+                </div>
+            </div>
+            <!-- end:: Aside Brand -->
+            <!-- begin:: Aside Menu -->
+            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500" >
+                    <ul class="kt-menu__nav ">
+                        
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-squares"></i><span class="kt-menu__link-text">Dashboard</span></a>
+                        </li>
+                        <li class="kt-menu__item  " aria-haspopup="true" >
+                            <a href="/khachhang/thongtin" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-user-circle"></i><span class="kt-menu__link-text">Thông Tin Cá Nhân</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang/taikhoan" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-credit-card"></i><span class="kt-menu__link-text">Tài Khoản Ngân Hàng</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang/thanhtoan" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-donate"></i><span class="kt-menu__link-text">Tài Khoản Thanh Toán</span></a>
+                        </li>
+                        <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true" >
+                            <a href="/khachhang/tietkiem" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-address-card"></i><span class="kt-menu__link-text">Tài Khoản Tiết Kiệm</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/dangxuat" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-smile-beam"></i><span class="kt-menu__link-text">Đăng xuất</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end:: Aside Menu -->
+            
+        </div>
+        <!-- end:: Aside -->
+        <!-- begin:: Wrapper -->
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+            <!-- begin:: Header -->
+            <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed " >
+                <!-- begin:: Header Menu -->
+                <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                    <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile kt-header-menu--layout- " >
+                        <ul class="kt-menu__nav ">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- end:: Header Menu -->
+                <!-- begin:: Header Topbar -->
+                <div class="kt-header__topbar">
+                    
+                    <!--begin: Notifications -->
+                    <%- include('../thongbao',{get_all_tb,count_all_tb}) -%>
+                    <!--end: Notifications -->
+                    <!--begin: User Bar -->
+                    <div class="kt-header__topbar-item kt-header__topbar-item--user">
+                        <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px, 0px">
+                            <div class="kt-header__topbar-user">
+                                <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span> <span class="kt-header__topbar-username kt-hidden-mobile"><%=kwKH.hoten%></span> 
+                                <%
+                                             if(kwKH.avatar!=null)
+                                             {
+                                                s= new Buffer(kwKH.avatar).toString('base64');
+                                                %><img alt="Pic" src="data:image/jpeg;base64,<%=s %>" /><%
+                                             }
+                                             else
+                                             {
+                                                %><img alt="Pic" src="public/index/images/bg-logo.jpg" /><%
+                                             }
+                                             %>
+                                <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                                <span class="kt-badge kt-badge--username kt-badge--lg kt-badge--brand kt-hidden kt-badge--bold">S</span> 
+                            </div>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
+                            <div class="kt-user-card kt-margin-b-50 kt-margin-b-30-tablet-and-mobile" style="background-image: url(kw/media/misc/head_bg_sm.jpg)">
+                                <div class="kt-user-card__wrapper">
+                                    <div class="kt-user-card__pic">
+                                        <%
+                                             if(kwKH.avatar!=null)
+                                             {
+                                                s= new Buffer(kwKH.avatar).toString('base64');
+                                                %><img alt="Pic" src="data:image/jpeg;base64,<%=s %>" /><%
+                                             }
+                                             else
+                                             {
+                                                %><img alt="Pic" src="public/index/images/bg-logo.jpg" /><%
+                                             }
+                                             %>
+                                    </div>
+                                    <div class="kt-user-card__details">
+                                        <div class="kt-user-card__name"><%=kwKH.hoten%></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="kt-nav kt-margin-b-10">
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/thongtin" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-calendar-3"></i></span>
+                                        <span class="kt-nav__link-text">Thông tin cá nhân </span> 
+                                    </a>
+                                </li>
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/taikhoan" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-browser-2"></i></span>
+                                        <span class="kt-nav__link-text">Tài khoản ngân hàng</span> 
+                                    </a>
+                                </li>
+                                
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/thongtin" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-gear"></i></span>
+                                        <span class="kt-nav__link-text">Đổi mật khẩu</span> 
+                                    </a>
+                                </li>
+                                <li class="kt-nav__item kt-nav__item--custom kt-margin-t-15"> <a href="/dangxuat" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold">Đăng xuất</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end: User Bar -->
+                </div>
+                <!-- end:: Header Topbar -->
+            </div>
+            <!-- end:: Header -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                <!-- begin:: Subheader -->
+                <div class="kt-subheader kt-grid__item" id="kt_subheader">
+                    <div class="kt-subheader__main">
+                        <h3 class="kt-subheader__title">
+                            Dashboard
+                        </h3>
+                        <span class="kt-subheader__separator kt-hidden"></span> 
+                        <div class="kt-subheader__breadcrumbs">
+                            <a href="/khachhang" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span> 
+                            <a href="/khachhang/tietkiem" class="kt-subheader__breadcrumbs-link"> Tài khoản tiết kiệm</a> 
+                            <span class="kt-subheader__breadcrumbs-separator"></span> 
+                            <a href="/khachhang/tietkiem/gui" class="kt-subheader__breadcrumbs-link"> gửi tiết kiệm</a>   
+                            <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: Subheader -->
+                <!-- begin:: Content -->
+                <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content">
+                    <!--Sử dụng row để nhé-->
+                    <%
+                    if(thongbao!=null)
+                    {
+                        if(thongbao=="3")
+                        {
+                            %>
+                            <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" style="padding-right: 17px; display: block;">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                KingWolf thông báo
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>- Hiện tại tài khoản của quý khách đang bị khóa.</p>
+                                            <p>- Khách hàng vui lòng liên hệ nhân viên hoặc đến trực tiếp trụ sở ngân hàng.</p>
+                                            <p>- Xin lỗi quí khách về sự bất tiện này.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="btn btn-outline-brand" href="/khachhang/tietkiem">Quay lại</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%
+                        }
+                    }
+                    %>
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="kt-iconbox">
+                                        <div class="kt-iconbox__icon">
+                                            <div class="kt-iconbox__icon-bg"></div>
+                                            <i class="fa fa-money-bill-alt"></i> 
+                                        </div>
+                                        <div class="kt-iconbox__title"><%=format_money(kwKH.taikhoan.sotien)%> VNĐ</div>
+                                    </div>
+                                </div>
+                                <!--Input -->
+                                <div class="col-md-6">
+                                        <ul class="nav nav-tabs nav-pills nav-fill" role="tablist">
+                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#kt_tabs_4_1">Không kỳ hạn</a> </li>
+                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kt_tabs_4_2">Có kỳ hạn</a> </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="kt_tabs_4_1" role="tabpanel">
+                                                <form method="POST">
+                                                <div class="form-group ">
+                                                    <label>Số tiền (min : 1.000.000 VNĐ)</label>
+                                                    <div class="input-group">
+                                                        <input name="kw_tt_tien_kokyhan" type="text" class="form-control" id="kt_inputmask_8" im-insert="true" required>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-warning"  disabled="disabled" type="button">VNĐ</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <Label>Lãi suất 0.1%/ năm</Label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="btn-group" role="group" aria-label="Medium group">
+                                                        <button type="submit" name="kw_tt_khongkyhan" value="123" class="btn btn-focus btn-elevate btn-pill btn-elevate-air">Send</button>
+                                                        <button type="reset" class="btn btn-brand btn-elevate btn-pill btn-elevate-air">Reset</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane" id="kt_tabs_4_2" role="tabpanel">
+                                                <form method="POST">
+                                                    <div class="form-group ">
+                                                        <label>Số tiền (min : 1.000.000 VNĐ)</label>
+                                                        <div class="input-group">
+                                                            <input name="kw_tt_tien_cokyhan" type="text" class="form-control" id="kt_inputmask_88" im-insert="true" required>
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-warning"  disabled="disabled" type="button">VNĐ</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleSelect1">Kỳ hạn gửi</label>
+                                                        <select name="kw_thang" class="form-control" id="exampleSelect1">
+                                                            <option value="1">1 Tháng</option>
+                                                            <option value="2">2 Tháng</option>
+                                                            <option value="3">3 Tháng</option>
+                                                            <option value="4">4 Tháng</option>
+                                                            <option value="5">5 Tháng</option>
+                                                            <option value="6">6 Tháng</option>
+                                                            <option value="7">7 Tháng</option>
+                                                            <option value="8">8 Tháng</option>
+                                                            <option value="9">9 Tháng</option>
+                                                            <option value="10">10 Tháng</option>
+                                                            <option value="12">12 Tháng</option>
+                                                            <option value="13">13 Tháng</option>
+                                                            <option value="15">15 Tháng</option>
+                                                            <option value="18">18 Tháng</option>
+                                                            <option value="24">24 Tháng</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleSelect1">Chỉ thị đáo hạn</label>
+                                                        <select name="kw_loai" class="form-control" id="exampleSelect2">
+                                                            <option value="1">Tự động giai hạn gốc</option>
+                                                            <option value="2">Tự động giai hạn gốc và lãi</option>
+                                                            <option value="3">Tự động tất toán khi đến hạn</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="btn-group" role="group" aria-label="Medium group">
+                                                            <button type="submit" name="kw_tt_cokyhan" class="btn btn-focus btn-elevate btn-pill btn-elevate-air">Send</button>
+                                                            <button type="reset" class="btn btn-brand btn-elevate btn-pill btn-elevate-air">Reset</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    <strong>LÃI SUẤT KINGWOLF</strong>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <table class="table table-striped m-table">
+                                <thead>
+                                    <tr>
+                                        <th>Kỳ Hạn</th>
+                                        <th>Lãi Suất</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th >Không kỳ hạn</th>
+                                        <td>0.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >1 tháng</th>
+                                        <td>3.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >2 tháng</th>
+                                        <td>3.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >3 tháng</th>
+                                        <td>4.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >4 tháng</th>
+                                        <td>4.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >5 tháng</th>
+                                        <td>4.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >6 tháng</th>
+                                        <td>4.4%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >7 tháng</th>
+                                        <td>4.4%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >8 tháng</th>
+                                        <td>4.4%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >9 tháng</th>
+                                        <td>4.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >10 tháng</th>
+                                        <td>4.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >12 tháng</th>
+                                        <td>6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >13 tháng</th>
+                                        <td>6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >15 tháng</th>
+                                        <td>6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >18 tháng</th>
+                                        <td>6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >24 tháng</th>
+                                        <td>6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <th >Tiền gửi thanh toán</th>
+                                        <td>0.2%</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: Content -->
+            </div>
+            <!-- begin:: Footer -->
+            <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
+                <div class="kt-footer__copyright"> 2020&nbsp;&copy;&nbsp;<a href="http://KingWolf Bankthemes.com/KingWolf Bank" target="_blank" class="kt-link">KingWolf Bank</a> </div>
+                
+            </div>
+            <!-- end:: Footer -->
+        </div>
+        <!-- end:: Wrapper -->
+    </div>
+    <!-- end:: Page -->
+</div>
+<!-- end:: Root -->
+<%- include('../footer') -%>
+
+

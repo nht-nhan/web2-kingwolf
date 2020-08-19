@@ -1,0 +1,184 @@
+<%- include('header',{title: 'Thêm thông tin'}) -%>
+    <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed ">
+        <div class="kt-header-mobile__logo">
+            <a href="index.html">
+                <img alt="Logo" src="kw/media/logos/logo-6.png" />
+            </a>
+        </div>
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+           
+            <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+        </div>
+    </div>
+    <!-- end:: Header Mobile -->
+    <!-- begin:: Root -->
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <!-- begin:: Page -->
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <!-- begin:: Aside -->
+            <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+            <div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+                <!-- begin::Aside Brand -->
+                <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+                    <div class="kt-aside__brand-logo">
+                        <a href="index.html">
+                            <img alt="Logo" src="kw/media/logos/logo-6.png" />
+                        </a>
+                    </div>
+                    <div class="kt-aside__brand-tools">
+                        <button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler"><span></span></button>
+                    </div>
+                </div>
+                <!-- end:: Aside Brand -->
+                <!-- begin:: Aside Menu -->
+                <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                    <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
+                        <ul class="kt-menu__nav ">
+
+                            <li class="kt-menu__item disabled" aria-haspopup="true">
+                                <a target="_blank" href="/dangxuat" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-smile-beam"></i><span class="kt-menu__link-text">Đăng Xuất</span></a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- end:: Aside Menu -->
+
+            </div>
+            <!-- end:: Aside -->
+            <!-- begin:: Wrapper -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                    <!-- begin:: Subheader -->
+                    <div class="kt-subheader kt-grid__item" id="kt_subheader">
+                        <div class="kt-subheader__main">
+                            <h3 class="kt-subheader__title">
+                                Dashboard
+                            </h3>
+                            <span class="kt-subheader__separator kt-hidden"></span>
+                            <div class="kt-subheader__breadcrumbs">
+                                <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                                <span class="kt-subheader__breadcrumbs-separator"></span> <a href="" class="kt-subheader__breadcrumbs-link"> Users </a> <span class="kt-subheader__breadcrumbs-separator"></span> <a href="" class="kt-subheader__breadcrumbs-link"> Thêm thông tin </a>
+                                <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end:: Subheader -->
+                    <!-- begin:: Content -->
+                    <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content">
+                        <!--Sử dụng row để nhé-->
+                        
+                        <div class="row">
+                                <!--begin::Portlet-->
+                                <div class="kt-portlet">
+                                    <div class="kt-portlet__head">
+                                        <div class="kt-portlet__head-label">
+                                            <h3 class="kt-portlet__head-title">
+                                                Chứng minh nhân dân / thẻ căn cước công dân
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <!--begin::Form-->
+                                    <form class="kt-form" method="POST" enctype="multipart/form-data">
+                                        <div class="kt-portlet__body">
+                                            <p><span class="kt-font-boldest kt-font-danger">Nhập thông tin chính xác để nhân viên ngân hàng kiểm duyệt</span></p>
+                                            <!--File input-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Mặt trước</label>
+                                                        <div></div>
+                                                        <div class="custom-file">
+                                                            <input type="file" accept="image/*" onchange="loadFiletruoc(event)" class="custom-file-input" id="avatar_truoc" name="avatar_truoc">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <img id="outputtruoc" style="width: 500px;">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Mặt Sau</label>
+                                                        <div></div>
+                                                        <div class="custom-file">
+                                                            <input type="file" accept="image/*" onchange="loadFilesau(event)" class="custom-file-input" id="avatar_sau" name="avatar_sau">
+                                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <img id="outputsau" style="width: 500px;" >
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputPassword1">Số Nhà, Phường</label>
+                                                        <input type="text" required name="diachi_nha" class="form-control" id="exampleInputPassword1" placeholder="e10/265 đường quốc lộ 50">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputPassword1">Xã / Huyện</label>
+                                                        <input type="text" required name="diachi_xa" class="form-control" id="exampleInputPassword1" placeholder="Bình Chánh">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputPassword1">Tỉnh/ Thành Phố</label>
+                                                        <input type="text" required name="diachi_tp"class="form-control" id="exampleInputPassword1" placeholder="TPHCM">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                               
+                                            
+                                        </div>
+                                        <div class="kt-portlet__foot">
+                                            <div class="kt-form__actions">
+                                                <button type="submit" class="btn btn-primary">Gửi thông tin</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                                <!--end::Portlet-->
+                                
+                        </div>
+                    </div>
+                    <!-- end:: Content -->
+                </div>
+                <!-- begin:: Footer -->
+                <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
+                    <div class="kt-footer__copyright"> 2020&nbsp;&copy;&nbsp;<a href="http://KingWolf Bankthemes.com/KingWolf Bank" target="_blank" class="kt-link">KingWolf Bank</a> </div>
+
+                </div>
+                <!-- end:: Footer -->
+            </div>
+            <!-- end:: Wrapper -->
+        </div>
+        <!-- end:: Page -->
+    </div>
+    <!-- end:: Root -->
+    <script>
+        var loadFiletruoc = function(event) {
+          var output = document.getElementById('outputtruoc');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.offsetWidth = 500;
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+        var loadFilesau = function(event) {
+          var output = document.getElementById('outputsau');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.offsetWidth = 500;
+          output.onload = function() {
+            URL.revokeObjectURL(output.src) // free memory
+          }
+        };
+      </script>
+    <%- include('footer') -%>

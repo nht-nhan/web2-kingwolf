@@ -1,0 +1,269 @@
+<%- include('../header',{title: 'Tài Khoản Ngân Hàng'}) -%>
+<!-- begin:: Header Mobile -->
+<div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed " >
+    <div class="kt-header-mobile__logo">
+        <a href="/khachhang">
+            <img alt="Logo" src="kw/media/logos/logo-6.png"/>
+        </a>
+    </div>
+    <div class="kt-header-mobile__toolbar">
+        <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+       
+        <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+    </div>
+</div>
+<!-- end:: Header Mobile -->
+<!-- begin:: Root -->
+<div class="kt-grid kt-grid--hor kt-grid--root">
+    <!-- begin:: Page -->
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        <!-- begin:: Aside -->
+        <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
+        <div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+            <!-- begin::Aside Brand -->
+            <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+                <div class="kt-aside__brand-logo">
+                    <a href="/khachhang">
+                        <img alt="Logo" src="kw/media/logos/logo-6.png"/>
+                    </a>
+                </div>
+                <div class="kt-aside__brand-tools">
+                    <button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left" id="kt_aside_toggler"><span></span></button>
+                </div>
+            </div>
+            <!-- end:: Aside Brand -->
+            <!-- begin:: Aside Menu -->
+            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500" >
+                    <ul class="kt-menu__nav ">
+                        
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-squares"></i><span class="kt-menu__link-text">Dashboard</span></a>
+                        </li>
+                        <li class="kt-menu__item  " aria-haspopup="true" >
+                            <a href="/khachhang/thongtin" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-user-circle"></i><span class="kt-menu__link-text">Thông Tin Cá Nhân</span></a>
+                        </li>
+                        <li class="kt-menu__item kt-menu__item--active " aria-haspopup="true" >
+                            <a href="/khachhang/taikhoan" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-credit-card"></i><span class="kt-menu__link-text">Tài Khoản Ngân Hàng</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang/thanhtoan" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-donate"></i><span class="kt-menu__link-text">Tài Khoản Thanh Toán</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/khachhang/tietkiem" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-address-card"></i><span class="kt-menu__link-text">Tài Khoản Tiết Kiệm</span></a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" >
+                            <a href="/dangxuat" class="kt-menu__link "><i class="kt-menu__link-icon fa fa-smile-beam"></i><span class="kt-menu__link-text">Đăng xuất</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end:: Aside Menu -->
+            
+        </div>
+        <!-- end:: Aside -->
+        <!-- begin:: Wrapper -->
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+            <!-- begin:: Header -->
+            <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed " >
+                <!-- begin:: Header Menu -->
+                <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                    <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile kt-header-menu--layout- " >
+                        <ul class="kt-menu__nav ">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- end:: Header Menu -->
+                <!-- begin:: Header Topbar -->
+                <div class="kt-header__topbar">
+                    
+                    <!--begin: Notifications -->
+                    <%- include('../thongbao',{get_all_tb,count_all_tb}) -%>
+                    <!--end: Notifications -->
+                    <!--begin: User Bar -->
+                    <div class="kt-header__topbar-item kt-header__topbar-item--user">
+                        <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px, 0px">
+                            <div class="kt-header__topbar-user">
+                                <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span> <span class="kt-header__topbar-username kt-hidden-mobile"><%=kwKH.hoten%></span> 
+                                <%
+                                             if(kwKH.avatar!=null)
+                                             {
+                                                s= new Buffer(kwKH.avatar).toString('base64');
+                                                %><img alt="Pic" src="data:image/jpeg;base64,<%=s %>" /><%
+                                             }
+                                             else
+                                             {
+                                                %><img alt="Pic" src="public/index/images/bg-logo.jpg" /><%
+                                             }
+                                             %>
+                                <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                                <span class="kt-badge kt-badge--username kt-badge--lg kt-badge--brand kt-hidden kt-badge--bold">S</span> 
+                            </div>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
+                            <div class="kt-user-card kt-margin-b-50 kt-margin-b-30-tablet-and-mobile" style="background-image: url(kw/media/misc/head_bg_sm.jpg)">
+                                <div class="kt-user-card__wrapper">
+                                    <div class="kt-user-card__pic">
+                                        <%
+                                             if(kwKH.avatar!=null)
+                                             {
+                                                s= new Buffer(kwKH.avatar).toString('base64');
+                                                %><img alt="Pic" src="data:image/jpeg;base64,<%=s %>" /><%
+                                             }
+                                             else
+                                             {
+                                                %><img alt="Pic" src="public/index/images/bg-logo.jpg" /><%
+                                             }
+                                             %>
+                                    </div>
+                                    <div class="kt-user-card__details">
+                                        <div class="kt-user-card__name"><%=kwKH.hoten%></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="kt-nav kt-margin-b-10">
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/thongtin" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-calendar-3"></i></span>
+                                        <span class="kt-nav__link-text">Thông tin cá nhân </span> 
+                                    </a>
+                                </li>
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/taikhoan" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-browser-2"></i></span>
+                                        <span class="kt-nav__link-text">Tài khoản ngân hàng</span> 
+                                    </a>
+                                </li>
+                                
+                                <li class="kt-nav__item">
+                                    <a href="khachhang/thongtin" class="kt-nav__link">
+                                        <span class="kt-nav__link-icon"><i class="flaticon2-gear"></i></span>
+                                        <span class="kt-nav__link-text">Đổi mật khẩu</span> 
+                                    </a>
+                                </li>
+                                <li class="kt-nav__item kt-nav__item--custom kt-margin-t-15"> <a href="/dangxuat" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold">Đăng xuất</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--end: User Bar -->
+                </div>
+                <!-- end:: Header Topbar -->
+            </div>
+            <!-- end:: Header -->
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                <!-- begin:: Subheader -->
+                <div class="kt-subheader kt-grid__item" id="kt_subheader">
+                    <div class="kt-subheader__main">
+                        <h3 class="kt-subheader__title">
+                            Dashboard
+                        </h3>
+                        <span class="kt-subheader__separator kt-hidden"></span> 
+                        <div class="kt-subheader__breadcrumbs">
+                            <a href="/khachhang" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span> 
+                            <a href="/khachhang/taikhoan" class="kt-subheader__breadcrumbs-link"> Tài khoản ngân hàng </a>  
+                            <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: Subheader -->
+                <!-- begin:: Content -->
+                <div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content">
+                    <!--Sử dụng row để nhé-->
+                    <div class="kt-portlet kt-profile">
+                        <div class="kt-profile__content">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-4 col-xl-4">
+                                    <div class="kt-profile__main">
+                                        <div class="kt-profile__main-info">
+                                            <img src="kw/media/logos/atm.png" alt="the atm kingwolf " width="300px" height="200px" >
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 col-lg-4 col-xl-4" >
+                                    <div class="kt-profile__contact">
+                                        <ul class="list-group list-group-flush " >
+                                            <li class="list-group-item float left">
+                                                <button class="btn btn-success btn-elevate btn-pill btn-elevate-air">Số tài khoản</button> 
+                                                <span class="float-right "style="padding-left:50px;">
+                                                    <p class="btn btn-metal" style="margin-bottom: 0px;"><%=kwKH.taikhoan.sotaikhoan%> </p>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item float left">
+                                                <button class="btn btn-danger btn-elevate btn-pill btn-elevate-air" >Số tiền</button>
+                                                <span class="float-right "style="padding-left:50px;">
+                                                    <p class="btn btn-metal" style="margin-bottom: 0px;"><%=format_money(kwKH.taikhoan.sotien)%> <%=kwKH.taikhoan.tiente%></p>
+                                                </span>
+                                            </li>
+                                            <li class="list-group-item float left">
+                                                <button class="btn btn-brand btn-elevate btn-pill btn-elevate-air">Tình trạng thẻ</button> 
+                                                <span class="float-right "style="padding-left:50px;">
+                                                    <p class="btn btn-metal " style="margin-bottom: 0px;">
+                                                        <%
+                                                        if(kwKH.taikhoan.tinhtrang==false)
+                                                        {
+                                                            %>Khóa<%
+                                                        }
+                                                        else
+                                                        {
+                                                            %>Mở<%
+                                                        }
+                                                        %>
+                                                    </p>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4 col-xl-4" >
+                                    <div class="kt-profile__contact">
+                                        <ul class="list-group list-group-flush " >
+                                            <li class="list-group-item float left"><button class="btn btn-success btn-elevate btn-pill btn-elevate-air">Ngày tạo</button> <span class="float-right "style="padding-left:50px;"><p class="btn btn-metal" style="margin-bottom: 0px;"><%=format('dd/MM/yyyy hh:mm:ss', kwKH.taikhoan.createdAt)%></p></span></li>
+                                            <li class="list-group-item float left"><button class="btn btn-danger btn-elevate btn-pill btn-elevate-air" >Đơn vị tiền tệ</button> <span class="float-right "style="padding-left:50px;"><p class="btn btn-metal" style="margin-bottom: 0px;"><%=kwKH.taikhoan.tiente%></p></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__body">
+                            <!--begin::Section-->
+                            <div class="kt-section">
+                                <div class="kt-section__content kt-section__content--fit kt-section__content--border">
+                                    <div class="kt-grid-nav">
+                                        <a href="/khachhang/thanhtoan/" class="kt-grid-nav__item">
+                                            <div class="kt-grid-nav__item-icon"><i class="fa fa-donate"></i></div>
+                                            <div class="kt-grid-nav__item-title">TÀI KHOẢN THANH TOÁN</div>
+                                            <div class="kt-grid-nav__item-desc">Rút tiền trong tài khoản ngân hàng</div>
+                                        </a>
+                                        <a href="/khachhang/tietkiem" class="kt-grid-nav__item">
+                                            <div class="kt-grid-nav__item-icon"><i class="fa fa-address-card"></i></div>
+                                            <div class="kt-grid-nav__item-title">TÀI KHOẢN TIẾT KIỆM</div>
+                                            <div class="kt-grid-nav__item-desc">Nạp tiền trong tài khoản ngân hàng</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Section-->
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: Content -->
+            </div>
+            <!-- begin:: Footer -->
+            <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
+                <div class="kt-footer__copyright"> 2020&nbsp;&copy;&nbsp;<a href="http://KingWolf Bankthemes.com/KingWolf Bank" target="_blank" class="kt-link">KingWolf Bank</a> </div>
+                
+            </div>
+            <!-- end:: Footer -->
+        </div>
+        <!-- end:: Wrapper -->
+    </div>
+    <!-- end:: Page -->
+</div>
+<!-- end:: Root -->
+<%- include('../footer') -%>

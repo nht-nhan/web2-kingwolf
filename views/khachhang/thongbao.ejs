@@ -1,0 +1,98 @@
+<div class="kt-header__topbar-item dropdown">
+    <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px, 0px" aria-expanded="true">
+        <span class="kt-header__topbar-icon"> <i class="flaticon2-bell-alarm-symbol"></i> <% if(count_all_tb.count!=0){%><span class="kt-badge kt-badge--dot kt-badge--notify kt-badge--sm kt-badge--brand"></span><%}%> </span>
+    </div>
+    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-lg">
+        <form>
+            <div class="kt-head" style="background-image: url(kw/media/misc/head_bg_sm.jpg)">
+                <h3 class="kt-head__title">
+                   Thông Báo
+                </h3>
+                <div class="kt-head__sub"><span class="kt-head__desc"><%=count_all_tb.count%> thông báo mới</span></div>
+            </div>
+            <div class="kt-notification kt-margin-t-30 kt-margin-b-20 kt-scroll" data-scroll="true" data-height="270" data-mobile-height="220">
+                <%
+                    get_all_tb.forEach(function(i){
+                        switch(i.loai)
+                        {
+                            case "L2":
+                            if(i.read==true)
+                            {
+                                %><a class="kt-notification__item kt-notification__item--read"><%
+                            }
+                            else
+                            {
+                                %><a href="/khachhang/tb/<%=i.id%>" class="kt-notification__item"><%
+                            }
+                            %>
+                            
+                                <div class="kt-notification__item-icon"> <i class="fab fa-bitcoin kt-font-brand"></i> </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title"><%=i.noidung%></div>
+                                </div>
+                            </a>
+                            <%
+                            break;
+                            case "L3":
+                            if(i.read==true)
+                            {
+                                %><a class="kt-notification__item kt-notification__item--read"><%
+                            }
+                            else
+                            {
+                                %><a href="/khachhang/tb/<%=i.id%>" class="kt-notification__item"><%
+                            }
+                            %>
+                            
+                                <div class="kt-notification__item-icon"> <i class="fa fa-dollar-sign kt-font-success"></i> </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title"><%=i.noidung%></div>
+                                </div>
+                            </a>
+                            <%
+                            break;
+                            case "L4":
+                            if(i.read==true)
+                            {
+                                %><a class="kt-notification__item kt-notification__item--read"><%
+                            }
+                            else
+                            {
+                                %><a href="/khachhang/tb/<%=i.id%>" class="kt-notification__item"><%
+                            }
+                            %>
+                            
+                                <div class="kt-notification__item-icon"> <i class="fa fa-piggy-bank kt-font-brand"></i> </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title"><%=i.noidung%></div>
+                                </div>
+                            </a>
+                            <%
+                            break;
+                            case "L5":
+                            if(i.read==true)
+                            {
+                                %><a class="kt-notification__item kt-notification__item--read"><%
+                            }
+                            else
+                            {
+                                %><a href="/khachhang/tb/<%=i.id%>" class="kt-notification__item"><%
+                            }
+                            %>
+                            
+                                <div class="kt-notification__item-icon"> <i class="fa fa-piggy-bank kt-font-success"></i> </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title"><%=i.noidung%></div>
+                                </div>
+                            </a>
+                            <%
+                            break;
+                            default:
+                            break;
+                        }
+                    })
+                %>
+            </div>
+        </form>
+    </div>
+</div>
