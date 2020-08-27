@@ -21,12 +21,12 @@ router.use(relogin);
             if(req.kwKH.taikhoan.tinhtrang==false)
             {
                 const thongbao=3;
-                const getall = await tietkiem.get_all(res.locals.kwKH.taikhoan.id);
-                res.render('khachhang/tietkiem/rut',{format_money,getall,format,thongbao,get_all_tb,count_all_tb});
+                const getall = await tietkiem.get_all(req.kwKH.taikhoan.id);
+                return res.render('khachhang/tietkiem/rut',{format_money,getall,format,thongbao,get_all_tb,count_all_tb});
             }
             const thongbao=null;
-            const getall = await tietkiem.get_all(res.locals.kwKH.taikhoan.id);
-            res.render('khachhang/tietkiem/rut',{format_money,getall,format,thongbao,get_all_tb,count_all_tb});
+            const getall = await tietkiem.get_all(req.kwKH.taikhoan.id);
+            return res.render('khachhang/tietkiem/rut',{format_money,getall,format,thongbao,get_all_tb,count_all_tb});
         } catch (error) {
             console.log("Thông báo lỗi: ",error);
             res.sendStatus(500);
