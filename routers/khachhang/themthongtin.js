@@ -30,7 +30,7 @@ const router = new Router();
             
         } catch (error) {
             console.log("Thông báo lỗi: ",error);
-            return res.sendStatus(500);
+            return res.status(500).render('maychu/500');
         }
     }))
    //=========[END: POST]=========//

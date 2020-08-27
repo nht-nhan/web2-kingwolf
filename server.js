@@ -59,7 +59,9 @@ app.use('/nhanvien/danhsach',require('./routers/nhanvien/danhsach'));
 app.use('/nhanvien/taikhoan',require('./routers/nhanvien/taikhoan'));
 app.use('/nhanvien/naptien',require('./routers/nhanvien/naptien'));
 //===================================//
-
+app.use(function(req,res){
+    res.status(404).render('maychu/404',{home:process.env.HOSTS});
+});
 //Run server
 db.sync().then(function() {
     app.listen(port, () => console.log(`server listening on port ${port}!`));

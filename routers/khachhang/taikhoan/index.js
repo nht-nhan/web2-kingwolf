@@ -20,7 +20,7 @@ const router = new Router();
 
     } catch (error) {
         console.log("Thông báo lỗi :", error);
-        res.sendStatus(500);
+        res.status(500).render('maychu/500');
     }
 }));
    //=========[END: GET]=========//

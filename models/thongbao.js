@@ -15,7 +15,7 @@ class thongbao extends Model {
    {
        return thongbao.findAndCountAll({where:{taikhoanId:id}});
    }
-    static async save_loai_1(loaisave,nguoiguis,nguoinhans,sotiens,noidungs)
+    static async save_loai_1(loaisave,nguoiguis,nguoinhans,sotiens,noidungs,id)
     {
         return thongbao.create({
             loai:loaisave,
@@ -23,6 +23,8 @@ class thongbao extends Model {
             nguoinhan:nguoinhans,
             sotien:sotiens,
             noidung:noidungs,
+            read:false,
+            taikhoanId:id,
         })
     }
     static async save_loai(loaisave,sotiens,noidungs,reads,id)
@@ -46,6 +48,10 @@ class thongbao extends Model {
     static async count_get_all(id)
     {
         return thongbao.findAndCountAll({where:{read:false,taikhoanId:id}});
+    }
+    static async find_all_L1(id)
+    {
+        return thongbao.findAll({where:{loai:"L1",taikhoanId:id}});
     }
     static async find_id(id)
     {

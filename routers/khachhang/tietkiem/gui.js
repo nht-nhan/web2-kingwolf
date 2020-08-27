@@ -3,6 +3,7 @@ const tb = require('../../../models/thongbao');
 const relogin = require('../../../middlewares/khachhang/relogin');
 const asyncHandler = require('express-async-handler');
 const format  = require('date-format');
+const mail=require('../../../models/mail');
 const {format_money} = require('../../../models/functions');
 const tietkiem = require('../../../models/tietkiem');
 const taikhoan = require('../../../models/taikhoan');
@@ -27,7 +28,7 @@ router.use(relogin);
         res.render('khachhang/tietkiem/gui',{format_money,thongbao,get_all_tb,count_all_tb});
     } catch (error) {
         console.log("Thông báo lỗi: ",error);
-        res.sendStatus(500);
+        res.status(500).render('maychu/500');
     }
   }));
    //=========[END: GET]=========//
@@ -60,6 +61,7 @@ router.use(relogin);
                         if(check_tao_tt)
                         {
                             await tb.save_loai("L5",tiengui_kokyhan,`Bạn đã gửi ${tiengui_kokyhan} tài khoản tiết kiệm có mã ${matietkiems}`,false,req.kwKH.taikhoan.id);
+                            await mail.send_tb(req.kwKH.email,"KingWolf-Bank thông báo mới","3",tiengui_kokyhan,Number(req.kwKH.taikhoan.sotien-tiengui_kokyhan),matietkiems);
                             res.redirect('/khachhang/tietkiem')
                         }
                     }
@@ -102,6 +104,7 @@ router.use(relogin);
                         if(check_tao_tt)
                         {
                             await tb.save_loai("L5",tiengui_cokyhan,`Bạn đã gửi ${tiengui_cokyhan} tài khoản tiết kiệm có mã ${matietkiems}`,false,req.kwKH.taikhoan.id);
+                            await mail.send_tb(req.kwKH.email,"KingWolf-Bank thông báo mới","3",tiengui_cokyhan,Number(req.kwKH.taikhoan.sotien-tiengui_cokyhan),matietkiems);
                             res.redirect('/khachhang/tietkiem')
                         }
                     }
@@ -109,7 +112,7 @@ router.use(relogin);
             }
         } catch (error) {
             console.log("Thông báo lỗi: ",error)
-            res.sendStatus(500);
+            res.status(500).render('maychu/500');
         }
 
    }))

@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const relogin = require('../../../middlewares/khachhang/relogin');
+const mail = require('../../../models/mail');
 const asyncHandler = require('express-async-handler');
 const thanhtoan  = require('../../../models/thanhtoan');
 const taikhoan =require('../../../models/taikhoan');
@@ -35,7 +36,7 @@ router.use(relogin);
            
         } catch (error) {
             console.log("Thông báo lỗi :", error);
-            res.sendStatus(500);
+            res.status(500).render('maychu/500');
             
         }
     }));
@@ -82,6 +83,7 @@ router.use(relogin);
                                 const thongbao=1;
                                 res.render('khachhang/thanhtoan/ruttien',{tt_rut,format,lay_ma,thongbao,format_money,get_all_tb,count_all_tb});
                                 await tb.save_loai("L2",tien,`Bạn đã rút -${tien} từ tài khoản thanh toán`,false,req.kwKH.taikhoan.id);
+                                await mail.send_tb(req.kwKH.email,"KingWolf-Bank thông báo mới","1",tien,tien3,0);
                                 break;
                             }
                         }
@@ -90,7 +92,7 @@ router.use(relogin);
             }
         } catch (error) {
             console.log("Thông báo lỗi :", error);
-            res.sendStatus(500);
+            res.status(500).render('maychu/500');
         }
     }));
    //=========[END: POST]=========//

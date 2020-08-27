@@ -3,6 +3,7 @@ const tb = require('../../../models/thongbao');
 const relogin = require('../../../middlewares/khachhang/relogin');
 const asyncHandler = require('express-async-handler');
 const format  = require('date-format');
+const mail = require('../../../models/mail');
 const {format_money} = require('../../../models/functions');
 const tietkiem = require('../../../models/tietkiem');
 const taikhoan = require('../../../models/taikhoan');
@@ -29,7 +30,7 @@ router.use(relogin);
             return res.render('khachhang/tietkiem/rut',{format_money,getall,format,thongbao,get_all_tb,count_all_tb});
         } catch (error) {
             console.log("Thông báo lỗi: ",error);
-            res.sendStatus(500);
+            res.status(500).render('maychu/500');
         }
     }));
    //=========[END: GET]=========//
@@ -55,6 +56,7 @@ router.use(relogin);
                     if(check_delete)
                     {
                         await tb.save_loai("L4",tientra,`Bạn đã rút ${tientra} từ tài khoản tiết kiệm với mã ${tk.matietkiem}`,false,req.kwKH.taikhoan.id);
+                        await mail.send_tb(req.kwKH.email,"KingWolf-Bank thông báo mới","4",tientra,Number(req.kwKH.taikhoan.sotien+tientra),tk.matietkiem);
                         res.redirect('/khachhang/taikhoan');
                     }
                 }
@@ -71,6 +73,7 @@ router.use(relogin);
                     if(check_delete1)
                     {
                         await tb.save_loai("L4",tientra,`Bạn đã rút ${tientra} từ tài khoản tiết kiệm với mã ${tk.matietkiem}`,false,req.kwKH.taikhoan.id);
+                        await mail.send_tb(req.kwKH.email,"KingWolf-Bank thông báo mới","4",tientra,Number(req.kwKH.taikhoan.sotien+tientra),tk.matietkiem);
                         res.redirect('/khachhang/taikhoan');
                     }
                 }

@@ -249,6 +249,15 @@
                                         get_all_tb.forEach(function(i){
                                             switch(i.loai)
                                             {
+                                                case "L1":
+                                                %>
+                                                <div class="kt-list__item">
+                                                    <span class="kt-list__icon"><i class="fa fa-recycle kt-font-brand"></i></span>
+                                                    <span class="kt-list__text">Bạn đã gửi <%=i.sotien%> vào số tài khoản <%=i.nguoinhan%> với nội dung: <%=i.noidung%></span>
+                                                    <span class="kt-list__time"><%=format_time(i.createdAt)%></span> 
+                                                </div>
+                                                <%
+                                                break;
                                                 case "L2":
                                                 %>
                                                 <div class="kt-list__item">

@@ -8,7 +8,7 @@ router.get('/',asyncHandler (async function(req,res){
     return res.render('maychu/dangnhap',{thongbao});
 }))
 router.get('/:timkiem',asyncHandler(async function(req,res){
-    return res.sendStatus(500);
+    return res.status(404).render('maychu/404',{home:process.env.HOSTS});
 }))
 router.post('/',asyncHandler(async function(req,res){
     const thongbao = [];
@@ -49,7 +49,7 @@ router.post('/',asyncHandler(async function(req,res){
         }
     } catch (error) {
         console.log("Thông báo lỗi :", error);
-        return res.sendStatus(500);
+        return res.status(500).render('maychu/500');
     }
 }))
 module.exports=router;

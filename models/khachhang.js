@@ -76,6 +76,10 @@ class KhachHang extends Model {
     {
         return KhachHang.findByPk(id,{include:[{model:taikhoan}]});
     }
+    static async find_id_join_tk_stk(stk)
+    {
+        return KhachHang.findOne({include:[{model:taikhoan,where:{sotaikhoan:stk}}]});
+    }
     static async find_all_join_tk()
     {
         return KhachHang.findAll({include:[{model:taikhoan}]})

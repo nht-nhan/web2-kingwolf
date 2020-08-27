@@ -15,6 +15,24 @@
                     get_all_tb.forEach(function(i){
                         switch(i.loai)
                         {
+                            case "L1":
+                            if(i.read==true)
+                            {
+                                %><a class="kt-notification__item kt-notification__item--read"><%
+                            }
+                            else
+                            {
+                                %><a href="/khachhang/tb/<%=i.id%>" class="kt-notification__item"><%
+                            }
+                            %>
+                            
+                                <div class="kt-notification__item-icon"> <i class="fa fa-recycle kt-font-brand"></i> </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">Bạn đã gửi <%=i.sotien%> vào số tài khoản <%=i.nguoinhan%> với nội dung: <%=i.noidung%></div>
+                                </div>
+                            </a>
+                            <%
+                            break;
                             case "L2":
                             if(i.read==true)
                             {

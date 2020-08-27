@@ -45,13 +45,13 @@ router.post('/', asyncHandler(async function(req, res) {
                     return res.render('maychu/dangky', { thongbao })
                 } else {
                     console.log("Tài khoản và mật khẩu có thể bị sai á ");
-                    return res.sendStatus(500);
+                    return res.status(500).render('maychu/500');
                 }
             }
         }
     } catch (error) {
         console.log("Thông báo lỗi: ", error);
-        return res.sendStatus(500);
+        return res.status(500).render('maychu/500');
     }
 }))
 module.exports = router;

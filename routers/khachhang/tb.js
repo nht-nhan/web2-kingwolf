@@ -15,6 +15,9 @@ router.get('/:id',asyncHandler(async function(req, res){
         const loai= await tb.read(id);
         switch(loai)
         {
+            case "L1":
+                res.redirect('/khachhang/thanhtoan/chuyenkhoan');
+                break;
             case "L2":
                 res.redirect('/khachhang/thanhtoan/ruttien');
                 break;
@@ -30,7 +33,7 @@ router.get('/:id',asyncHandler(async function(req, res){
         }
     } catch (error) {
         console.log("Thông báo lỗi: ",error);
-        return res.sendStatus(500);
+        return res.status(500).render('maychu/500');
     }
   }))
   module.exports=router;
